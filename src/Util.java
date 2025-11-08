@@ -27,4 +27,10 @@ public class Util {
 
         return values;
     }
+
+    public static void swap(int[] values, int i, int x) {
+        int aux = values[i];
+        values[i] = values[x];
+        values[x] = aux;
+    }
 }

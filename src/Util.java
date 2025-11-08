@@ -1,21 +1,27 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Util {
 
-    public static List<Integer> readIntegersFromCSV(String filePath) throws IOException {
-        List<Integer> values = new ArrayList<>();
+    public static int[] readIntegersFromCSV(String filePath) throws IOException {
 
+        int count = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
+            br.readLine(); // skip header
+            while (br.readLine() != null) {
+                count++;
+            }
+        }
 
-            br.readLine(); //
+        int[] values = new int[count];
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            br.readLine();
+            String line;
+            int index = 0;
 
             while ((line = br.readLine()) != null) {
-                values.add(Integer.parseInt(line.trim()));
+                values[index++] = Integer.parseInt(line.trim());
             }
         }
 

@@ -33,4 +33,11 @@ public class Util {
         values[i] = values[x];
         values[x] = aux;
     }
+
+    public static double measureExecutionTime(Runnable method) {
+        long inicio = System.nanoTime();
+        method.run();
+        long fim = System.nanoTime();
+        return (fim - inicio) / 1000000.0;
+    }
 }

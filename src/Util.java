@@ -34,6 +34,25 @@ public class Util {
         values[x] = aux;
     }
 
+    public static void executeTest(String filePath, SortAlgorithm algorithm) throws IOException {
+        int[] numbers = Util.readIntegersFromCSV(filePath);
+        Runnable task = null;
+
+        switch (algorithm) {
+            case BUBBLE_SORT:
+                task = () -> BubbleSort.bubbleSort(numbers);
+                break;
+        }
+
+        if (task == null) {
+            return;
+        }
+
+        double timer = Util.measureExecutionTime(task);
+
+        System.out.println("\tExecution time: " + timer + "ms (" + filePath + ") (" + algorithm + ")");
+    }
+
     public static double measureExecutionTime(Runnable method) {
         long inicio = System.nanoTime();
         method.run();

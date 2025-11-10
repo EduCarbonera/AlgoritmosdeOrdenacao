@@ -44,6 +44,12 @@ public class Util {
                 break;
         }
 
+        switch (algorithm) {
+            case QUICK_SORT:
+                task = () -> QuickSort.quickSort(numbers);
+                break;
+        }
+
         if (task == null) {
             return;
         }

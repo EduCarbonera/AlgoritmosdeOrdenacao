@@ -50,6 +50,12 @@ public class Util {
                 break;
         }
 
+        switch (algorithm) {
+            case INSERTION_SORT:
+                task = () -> InsertionSort.insertionSort(numbers);
+                break;
+        }
+
         if (task == null) {
             return;
         }
